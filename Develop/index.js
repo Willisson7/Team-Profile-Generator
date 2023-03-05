@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 
 questions = [
     {
@@ -15,6 +16,18 @@ questions = [
         type: 'input',
         message: 'Please enter your email address.',
         name: 'input',
-    }
+    },
 ]
- console.log()
+ 
+inquirer
+.prompt(questions)
+.then((answers) => {
+    console.log(answers.name);
+})
+
+.catch((err) => {
+    if(err){
+        console.log(err)
+    }
+});
+
