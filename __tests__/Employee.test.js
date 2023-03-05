@@ -10,4 +10,3 @@ const employee = new Employee('Grant', 7, 'some@example.com');
         });
     });
 
-    console.log(this.name, this.id, this.email);
