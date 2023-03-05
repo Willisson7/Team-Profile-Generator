@@ -20,3 +20,5 @@ class Employee {
 }
 
 module.exports = Employee; 
+
+console.log('Hello There');
