@@ -18,7 +18,7 @@ questions = [
         name: 'input',
     },
 ]
- 
+ // pass questions in to prompt. Take answers and log them to console
 inquirer
 .prompt(questions)
 .then((answers) => {
