@@ -12,5 +12,9 @@ const Greg = new Manager('Greg', '17', 'greg@email.com', '117');
                 expect(Greg.getEmail()).toBe('greg@email.com');
                 expect(Greg.getOfficeNumber()).toBe('117');
             });
+            test('getRole should return Manager', () => {
+                const manager = new Manager('Grant', 7, 'some@example.com');
+                expect(manager.getRole()).toBe("Manager");
+            });
         });
     });
