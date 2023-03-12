@@ -1,11 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Employee = require('./lib/Employee');
+// const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const createHTML = require('./src/createhtml');
-const { default: Choices } = require('inquirer/lib/objects/choices');
+// const { default: Choices } = require('inquirer/lib/objects/choices');
 const employeeArray = [];
 
 function createManager(){
@@ -39,17 +39,75 @@ function createManager(){
 })
 }
 
-createManager();
 
 // TO DO: Create internFunction
-
-// TO DO: Crreate engineerFunction
-
+function createIntern(){
+    inquirer.prompt([{
+        type: 'input',
+        message: 'What is your name?',
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: 'Please enter your ID.',
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: 'Please enter your email address.',
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: 'Where did you attend school?',
+        name: 'school',
+    },
+    ])
+    .then(answers =>{
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        employeeArray.push(intern); 
+        console.log(employeeArray);
+        addMember();
+    })
+    
+};
+// TO DO: Create engineerFunction
+function createEngineer(){
+    inquirer.prompt([{
+        type: 'input',
+        message: 'What is your name?',
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: 'Please enter your ID.',
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: 'Please enter your email address.',
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: 'What is your Github UserName',
+        name: 'github',
+      
+    },
+    ])
+    .then(answers =>{
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+        employeeArray.push(engineer); 
+        console.log(employeeArray);
+        addMember();
+    })
+    
+};
 // TO DO: Create AddMember Function
 function addMember(){
     inquirer.prompt([{
             type: 'list',
-            message:'Would you like to add another team member?',
+            message:'Would you like to add a/another team member?',
             choices: ['engineer', 'intern', 'manager', 'none'],
             name: 'addMember',
     }])
@@ -58,7 +116,7 @@ function addMember(){
             createEngineer();
         }
         else if (answers.addMember === 'intern'){
-            createIntern
+            createIntern();
         }
         else if (answers.addMember === 'manager'){
             createManager();
@@ -69,33 +127,5 @@ function addMember(){
     
     })
 }
-// questions = [
-//     {
-//         type: 'input',
-//         message: 'What is your name?',
-//         name: 'name',
-//     },
-//     {
-//         type: 'input',
-//         message: 'Please enter your ID.',
-//         name: 'id',
-//     },
-//     {
-//         type: 'input',
-//         message: 'Please enter your email address.',
-//         name: 'input',
-//     },
-// ]
- // pass questions in to prompt. Take answers and log them to console
-// // inquirer
-// // .prompt(questions)
-// // .then((answers) => {
-// //     console.log(answers.name);
-// // })
 
-// .catch((err) => {
-//     if(err){
-//         console.log(err)
-//     }
-// });
-
+addMember();
